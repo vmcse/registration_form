@@ -7,7 +7,7 @@ if (process.argv.length < 3) {
   process.exit(1);
 }
 
-const username = "vmcse09";
+const username = "test";
 const password = process.argv[2];
 
 const url = `mongodb+srv://${username}:${password}@cluster0.ijopi3a.mongodb.net/?retryWrites=true&w=majority`;
