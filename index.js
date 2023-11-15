@@ -2,8 +2,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-const password = "";
-const username = "";
+if (process.argv.length < 3) {
+  console.log("give password as argument");
+  process.exit(1);
+}
+
+const username = "vmcse09";
+const password = process.argv[2];
 
 const url = `mongodb+srv://${username}:${password}@cluster0.ijopi3a.mongodb.net/?retryWrites=true&w=majority`;
 
@@ -43,7 +48,8 @@ app.post("/register", (req, res) => {
 
   newUser.save().then((result) => {
     console.log("note saved!");
-    mongoose.connection.close();
+    res.sendFile(__dirname + "/views/success.html");
+    //mongoose.connection.close();
   });
 });
 // Start the server
